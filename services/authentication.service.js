@@ -54,11 +54,11 @@ const userRegister = async (user) => {
 
 const userLogin = async (user) => {
   try {
-    if (!user?.username || !user?.password)
+    if (!user?.email || !user?.password)
       return { status: false, message: "Please fill up all the fields" };
     let userObject = await MongoDB.db
       .collection(mongoConfig.collections.USERS)
-      .findOne({ username: user?.username });
+      .findOne({ email: user?.email });
     if (userObject) {
       let isPasswordVerfied = await bcrypt.compare(
         user?.password,
