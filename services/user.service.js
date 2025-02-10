@@ -1,11 +1,11 @@
 const { mongoConfig } = require("../config");
 const MongoDB = require("./mongodb.service");
 
-const getUserData = async (username) => {
+const getUserData = async (email) => {
   try {
     let userObject = await MongoDB.db
       .collection(mongoConfig.collections.USERS)
-      .findOne({ username });
+      .findOne({ email });
 
     if (userObject) {
       return {

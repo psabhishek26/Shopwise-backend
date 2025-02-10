@@ -137,6 +137,7 @@ const tokenVerification = async (req, res, next) => {
           });
         } else {
           req["username"] = decoded?.username;
+          req["email"] = decoded?.email;
           next();
         }
       });
